@@ -14,6 +14,33 @@ const products: Product[] = [
 	{category: 'Vegetables', price: '$1', stocked: true, name: 'Peas'},
 ];
 
+type ProductsInCategoryProps = {
+	category: string;
+	products: Product[];
+};
+
+function ProductInCategory({category, products}: ProductsInCategoryProps) {
+	const productsInCategory = products.filter(product => (
+		product.category === category
+	));
+
+	return (
+		<>
+			<tr>
+				<th colSpan={2}>
+					{category}
+				</th>
+			</tr>
+			{productsInCategory.map(product => (
+				<tr key={product.name}>
+					<td>{product.name}</td>
+					<td>{product.price}</td>
+				</tr>
+			))}
+		</>
+	);
+}
+
 export default function App() {
 	const categories = products.reduce((acc: string[], product: Product) => (
 		acc.includes(product.category) ? acc : [...acc, product.category]
@@ -41,17 +68,7 @@ export default function App() {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th colSpan={2}>
-							{categories[0]}
-						</th>
-					</tr>
-					{products.filter(product => product.category === categories[0].category).map(product => (
-						<tr key={product.name}>
-							<td>{product.name}</td>
-							<td>{product.price}</td>
-						</tr>
-					))}
+					<ProductInCategory category={categories[0]} products={products}/>
 					<tr>
 						<th colSpan={2}>
 							{categories[1]}
