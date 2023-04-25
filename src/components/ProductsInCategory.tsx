@@ -5,6 +5,15 @@ type ProductsInCategoryProps = {
 	products: Product[];
 };
 
+function ProductRow({product}: {product: Product}) {
+	return (
+		<tr>
+			<td>{product.name}</td>
+			<td>{product.price}</td>
+		</tr>
+	);
+}
+
 export default function ProductInCategory({category, products}: ProductsInCategoryProps) {
 	const productsInCategory = products.filter(product => (
 		product.category === category
@@ -18,10 +27,7 @@ export default function ProductInCategory({category, products}: ProductsInCatego
 				</th>
 			</tr>
 			{productsInCategory.map(product => (
-				<tr key={product.name}>
-					<td>{product.name}</td>
-					<td>{product.price}</td>
-				</tr>
+				<ProductRow key={product.name} product={product} />
 			))}
 		</>
 	);
