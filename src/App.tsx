@@ -1,5 +1,11 @@
+import ProductCategoryRow from './components/ProductCategoryRow';
 import ProductInCategory from './components/ProductsInCategory';
 import type Product from './types/Product';
+
+type Category = {
+	name: string;
+	products: Product[];
+};
 
 const products: Product[] = [
 	{
@@ -22,11 +28,33 @@ const products: Product[] = [
 	},
 ];
 
-export default function App() {
+function ProductTable({products}: {products: Product[]}) {
 	const categories = products.reduce((acc: string[], product: Product) => (
 		acc.includes(product.category) ? acc : [...acc, product.category]
 	), []);
 
+	return (
+		<table className='product-table'>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				{categories.map(category => (
+					<ProductInCategory
+						key={category}
+						category={category}
+						products={products}
+					/>
+				))}
+			</tbody>
+		</table>
+	);
+}
+
+export default function App() {
 	return (
 		<div className='filterable-product-table'>
 			<div className='search-bar'>
@@ -41,24 +69,8 @@ export default function App() {
           입력 컨트롤
           체크박스
 			<p>Hello, World!</p>
-			<table className='product-table'>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Price</th>
-					</tr>
-				</thead>
-				<tbody>
-					{categories.map(category => (
-						<ProductInCategory
-							key={category}
-							category={category}
-							products={products}
-						/>
-					))}
-				</tbody>
+			<ProductTable products={products}/>
 
-			</table>
 		</div>
 	);
 }
