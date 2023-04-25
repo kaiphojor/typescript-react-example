@@ -1,14 +1,14 @@
-import type Product from '../types/Product';
+import selectCategories from '../utils/selectCategories';
 import ProductInCategory from './ProductsInCategory';
+
+import type Product from '../types/Product';
 
 type ProductTableProps = {
 	products: Product[];
 };
 
 export default function ProductTable({products}: ProductTableProps) {
-	const categories = products.reduce((acc: string[], product: Product) => (
-		acc.includes(product.category) ? acc : [...acc, product.category]
-	), []);
+	const categories = selectCategories(products);
 
 	return (
 		<table className='product-table'>
