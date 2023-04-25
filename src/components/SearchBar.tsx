@@ -1,18 +1,4 @@
-function CheckField({label}: {
-	label: string;
-}) {
-	// UseRef
-	const id = `checkbox-${label}`.replace(/ /g, '-').toLowerCase();
-
-	return (
-		<div>
-			<input type='checkbox' id={id}/>
-			<label htmlFor={id}>
-				{label}
-			</label>
-		</div>
-	);
-}
+import CheckField from './CheckField';
 
 export default function SearchBar() {
 	return (
