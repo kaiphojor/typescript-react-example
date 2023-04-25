@@ -69,17 +69,7 @@ export default function App() {
 				</thead>
 				<tbody>
 					<ProductInCategory category={categories[0]} products={products}/>
-					<tr>
-						<th colSpan={2}>
-							{categories[1]}
-						</th>
-					</tr>
-					{products.filter(product => product.category === categories[1]).map(product => (
-						<tr key={product.name}>
-							<td>{product.name}</td>
-							<td>{product.price}</td>
-						</tr>
-					))}
+					<ProductInCategory category={categories[1]} products={products}/>
 				</tbody>
 
 			</table>
