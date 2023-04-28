@@ -5,9 +5,13 @@ import type Product from '../types/Product';
 
 type ProductTableProps = {
 	products: Product[];
+	inStockOnly: boolean;
 };
 
-export default function ProductTable({products}: ProductTableProps) {
+export default function ProductTable({
+	products,
+	inStockOnly,
+}: ProductTableProps) {
 	const categories = selectCategories(products);
 
 	return (
@@ -24,6 +28,7 @@ export default function ProductTable({products}: ProductTableProps) {
 						key={category}
 						category={category}
 						products={products}
+						inStockOnly={inStockOnly}
 					/>
 				))}
 			</tbody>

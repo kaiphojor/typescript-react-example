@@ -7,10 +7,13 @@ import selectProducts from '../utils/selectProducts';
 type ProductsInCategoryProps = {
 	category: string;
 	products: Product[];
+	inStockOnly: boolean;
 };
 
 export default function ProductInCategory({
-	category, products,
+	category,
+	products,
+	inStockOnly,
 }: ProductsInCategoryProps) {
 	const productsInCategory = selectProducts(products, category);
 
