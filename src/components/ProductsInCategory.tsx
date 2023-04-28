@@ -13,9 +13,6 @@ export default function ProductInCategory({
 	category, products,
 }: ProductsInCategoryProps) {
 	const productsInCategory = selectProducts(products, category);
-	products.filter(product => (
-		product.category === category
-	));
 
 	return (
 		<>
