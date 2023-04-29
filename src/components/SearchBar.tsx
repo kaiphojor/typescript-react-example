@@ -1,5 +1,5 @@
 
-import CheckField from './CheckField';
+import CheckBoxField from './CheckBoxField';
 import TextField from './TextField';
 
 type SearchBarProps = {
@@ -22,7 +22,7 @@ export default function SearchBar({
 				filterText={filterText}
 				setFilterText={setFilterText}
 			/>
-			<CheckField label='only show products in stock'
+			<CheckBoxField label='only show products in stock'
 				inStockOnly={inStockOnly}
 				setInStockOnly={setInStockOnly}
 			/>

@@ -17,7 +17,10 @@ export default function FilterableProductTable({
 	// FilterText 있어야 하는 곳
 	const [filterText, setFilterText] = useState<string>('');
 
-	const filteredProducts = filterText.length	? filterProducts(products, filterText) : products;
+	const filterStockOnly = (product: Product, inStockOnly: boolean) => !inStockOnly || product.stocked;
+	const filteredProducts = filterProducts(products, {
+		filterText, inStockOnly,
+	});
 
 	return (
 		<div className='filterable-product-table'>
@@ -26,11 +29,9 @@ export default function FilterableProductTable({
 				setInStockOnly={setInStockOnly}
 				filterText={filterText}
 				setFilterText={setFilterText}
-				// OnChangeFilterText={handleChangeFilterText}
 			/>
 			<ProductTable
 				products={filteredProducts}
-				inStockOnly={inStockOnly}
 			/>
 		</div>
 	);
