@@ -4,9 +4,9 @@ import TextField from './TextField';
 
 type SearchBarProps = {
 	inStockOnly: boolean;
-	setInStockOnly: (arg0: boolean) => void;
+	setInStockOnly: (value: boolean) => void;
 	filterText: string;
-	setFilterText: (arg0: string) => void;
+	setFilterText: (value: string) => void;
 };
 
 export default function SearchBar({

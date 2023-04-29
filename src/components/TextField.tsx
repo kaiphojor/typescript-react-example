@@ -1,10 +1,14 @@
 import {type ChangeEvent, useState} from 'react';
 
+type SetFilterTextProps = {
+	setFilterText: (value: string) => void;
+};
+
 type TextFieldProps = {
 	placeholder: string;
 	filterText: string;
-	setFilterText: (arg0: string) => void;
-};
+
+} & SetFilterTextProps;
 
 export default function TextField({
 	placeholder,

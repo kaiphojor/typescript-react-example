@@ -1,4 +1,6 @@
 import type Product from '../types/Product';
+import filterProducts from '../utils/filterProducts';
+
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 import {useState} from 'react';
@@ -14,9 +16,8 @@ export default function FilterableProductTable({
 	const [inStockOnly, setInStockOnly] = useState<boolean>(false);
 	// FilterText 있어야 하는 곳
 	const [filterText, setFilterText] = useState<string>('');
-	const handleChangeFilterText = () => {
 
-	};
+	const filteredProducts = filterText.length	? filterProducts(products, filterText) : products;
 
 	return (
 		<div className='filterable-product-table'>
@@ -25,10 +26,10 @@ export default function FilterableProductTable({
 				setInStockOnly={setInStockOnly}
 				filterText={filterText}
 				setFilterText={setFilterText}
-				onChangeFilterText={handleChangeFilterText}
+				// OnChangeFilterText={handleChangeFilterText}
 			/>
 			<ProductTable
-				products={products}
+				products={filteredProducts}
 				inStockOnly={inStockOnly}
 			/>
 		</div>
