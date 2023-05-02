@@ -3,7 +3,7 @@ import filterProducts from '../utils/filterProducts';
 
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 type FilterableProductTableProps = {
 	products: Product[];
@@ -12,6 +12,17 @@ type FilterableProductTableProps = {
 export default function FilterableProductTable({
 	products,
 }: FilterableProductTableProps) {
+	useEffect(() => {
+		console.log('effect');
+		document.title = `NOW: ${new Date().getTime()}`;
+	});
+
+	useEffect(() => {
+		setInterval(() => {
+			document.title = `NOW: ${new Date().getTime()}`;
+		}, 100);
+	});
+
 	// InStockOnly가 있어야 하는 곳
 	const [inStockOnly, setInStockOnly] = useState<boolean>(false);
 	// FilterText 있어야 하는 곳
