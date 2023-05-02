@@ -9,7 +9,6 @@ function Timer() {
 
 		// 함수 리턴 - > effect clear
 		return () => {
-			console.log('End Of Effect');
 			clearInterval(id);
 			document.title = savedTitle;
 		};
