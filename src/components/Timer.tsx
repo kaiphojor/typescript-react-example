@@ -3,8 +3,6 @@ import {useEffect, useState} from 'react';
 function Timer() {
 	useEffect(() => {
 		const savedTitle = document.title;
-
-		console.log('effect');
 		const id = setInterval(() => {
 			document.title = `NOW: ${new Date().getTime()}`;
 		}, 100);
@@ -23,6 +21,10 @@ function Timer() {
 export default function TimerControl() {
 	const [playing, setPlaying] = useState<boolean>(false);
 	const [count, setCount] = useState<number>(0);
+
+	useEffect(() => {
+		console.log('Effect');
+	}, [playing]);
 
 	const handleClick = () => {
 		setPlaying(!playing);
