@@ -8,6 +8,7 @@ function Timer() {
 		const id = setInterval(() => {
 			document.title = `NOW: ${new Date().getTime()}`;
 		}, 100);
+
 		// 함수 리턴 - > effect clear
 		return () => {
 			console.log('End Of Effect');
@@ -21,6 +22,7 @@ function Timer() {
 
 export default function TimerControl() {
 	const [playing, setPlaying] = useState<boolean>(false);
+	const [count, setCount] = useState<number>(0);
 
 	const handleClick = () => {
 		setPlaying(!playing);
@@ -31,6 +33,12 @@ export default function TimerControl() {
 			{playing ? (<Timer/>) : (<p>Stop</p>)}
 			<button type='button' onClick={handleClick}>
         Toggle
+			</button>
+			<p>{count}</p>
+			<button type='button' onClick={() => {
+				setCount(count + 1);
+			}}>
+        Increase
 			</button>
 		</div>
 	);
