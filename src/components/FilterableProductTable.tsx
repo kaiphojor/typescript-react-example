@@ -36,8 +36,7 @@ export default function FilterableProductTable({
 
 	return (
 		<div className='filterable-product-table'>
-			<TimerControl/>
-			<hr/>
+
 			<SearchBar
 				inStockOnly={inStockOnly}
 				setInStockOnly={setInStockOnly}

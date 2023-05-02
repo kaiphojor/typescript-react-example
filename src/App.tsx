@@ -1,4 +1,6 @@
+import {useEffect, useState} from 'react';
 import FilterableProductTable from './components/FilterableProductTable';
+import TimerControl from './components/Timer';
 import type Product from './types/Product';
 
 // C const products: Product[] = [
@@ -22,9 +24,28 @@ import type Product from './types/Product';
 // 	},
 // ];
 
-export default function App({products}: {products: Product[]}) {
+export default function App() {
+	const [products, setProducts] = useState<Product[]>([]);
+
+	useEffect(() => {
+		// Fetch
+		const fetchProducts = async () => {
+			const url = 'http://localhost:3000/products';
+			const response = await fetch(url);
+			const data = await response.json();
+			setProducts(data.products);
+		};
+		// (()=>{})(); 형태로 실행하는 방법도 있다.
+
+		fetchProducts();
+	}, []);
 	return (
-		<FilterableProductTable products={products}/>
+		<div>
+			<TimerControl/>
+			<hr/>
+			<h1></h1>
+			<FilterableProductTable products={products}/>
+		</div>
 	);
 }
 

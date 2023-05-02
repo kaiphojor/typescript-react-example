@@ -3,16 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import App from './App';
 
-async function main() {
-	// Fetch
-	const url = 'http://localhost:3000/products';
-	const response = await fetch(url);
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const data = await response.json();
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const {products} = data;
-	console.log(products);
-
+function main() {
 	const element = document.getElementById('root');
 
 	if (!element) {
@@ -22,7 +13,7 @@ async function main() {
 	const root = ReactDOM.createRoot(element);
 	root.render((
 		<React.StrictMode>
-			<App products={products}/>
+			<App/>
 		</React.StrictMode>
 	));
 }
