@@ -4,6 +4,7 @@ import filterProducts from '../utils/filterProducts';
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 import {useEffect, useState} from 'react';
+import TimerControl from './Timer';
 
 type FilterableProductTableProps = {
 	products: Product[];
@@ -12,16 +13,16 @@ type FilterableProductTableProps = {
 export default function FilterableProductTable({
 	products,
 }: FilterableProductTableProps) {
-	useEffect(() => {
-		console.log('effect');
-		document.title = `NOW: ${new Date().getTime()}`;
-	});
+	// UseEffect(() => {
+	// 	console.log('effect');
+	// 	document.title = `NOW: ${new Date().getTime()}`;
+	// });
 
-	useEffect(() => {
-		setInterval(() => {
-			document.title = `NOW: ${new Date().getTime()}`;
-		}, 100);
-	});
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		document.title = `NOW: ${new Date().getTime()}`;
+	// 	}, 100);
+	// });
 
 	// InStockOnly가 있어야 하는 곳
 	const [inStockOnly, setInStockOnly] = useState<boolean>(false);
@@ -35,6 +36,8 @@ export default function FilterableProductTable({
 
 	return (
 		<div className='filterable-product-table'>
+			<TimerControl/>
+			<hr/>
 			<SearchBar
 				inStockOnly={inStockOnly}
 				setInStockOnly={setInStockOnly}
