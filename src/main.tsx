@@ -22,7 +22,7 @@ async function main() {
 	const root = ReactDOM.createRoot(element);
 	root.render((
 		<React.StrictMode>
-			<App/>
+			<App products={products}/>
 		</React.StrictMode>
 	));
 }
