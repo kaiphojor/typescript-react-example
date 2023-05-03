@@ -4,7 +4,6 @@ import filterProducts from '../utils/filterProducts';
 import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 import {useState} from 'react';
-import TimerControl from './Timer';
 
 type FilterableProductTableProps = {
 	products: Product[];

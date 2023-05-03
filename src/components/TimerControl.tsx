@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 function Timer() {
 	useEffect(() => {
@@ -18,19 +18,23 @@ function Timer() {
 }
 
 export default function TimerControl() {
+	const counter = useRef(1);
+
 	const [playing, setPlaying] = useState<boolean>(false);
 	const [count, setCount] = useState<number>(0);
 
 	useEffect(() => {
 		console.log('Effect');
-	}, [playing]);
+	}, []);
 
 	const handleClick = () => {
-		setPlaying(!playing);
+		counter.current += 1;
+		// SetPlaying(!playing);
 	};
 
 	return (
 		<div>
+			<p>{counter.current}</p>
 			{playing ? (<Timer/>) : (<p>Stop</p>)}
 			<button type='button' onClick={handleClick}>
         Toggle

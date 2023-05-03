@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import FilterableProductTable from './components/FilterableProductTable';
-import TimerControl from './components/Timer';
+import TimerControl from './components/TimerControl';
 import type Product from './types/Product';
 
 // C const products: Product[] = [
