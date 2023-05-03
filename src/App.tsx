@@ -3,7 +3,7 @@ import TimerControl from './components/TimerControl';
 import useFetchProducts from './hooks/useFetchProducts';
 
 export default function App() {
-	const products = useFetchProducts();
+	const {products} = useFetchProducts();
 	return (
 		<div>
 			<TimerControl/>

@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import useFetchProducts from '../hooks/useFetchProducts';
 
 function Timer() {
 	useEffect(() => {
@@ -23,13 +24,15 @@ export default function TimerControl() {
 	const [playing, setPlaying] = useState<boolean>(false);
 	const [count, setCount] = useState<number>(0);
 
-	useEffect(() => {
-		console.log('Effect');
-	}, []);
+	const {products, fetchProducts} = useFetchProducts();
+	if (playing) {
+		// FetchProducts();
+		console.log(products);
+	}
 
 	const handleClick = () => {
-		counter.current += 1;
-		// SetPlaying(!playing);
+		// Counter.current += 1;
+		setPlaying(!playing);
 	};
 
 	return (
