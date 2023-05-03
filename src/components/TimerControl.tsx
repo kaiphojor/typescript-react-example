@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import {useBoolean, useCounter} from 'usehooks-ts';
 import useFetchProducts from '../hooks/useFetchProducts';
 
 function Timer() {
@@ -19,33 +20,21 @@ function Timer() {
 }
 
 export default function TimerControl() {
-	const counter = useRef(1);
-
-	const [playing, setPlaying] = useState<boolean>(false);
-	const [count, setCount] = useState<number>(0);
-
-	const {products, fetchProducts} = useFetchProducts();
-	if (playing) {
-		// FetchProducts();
-		console.log(products);
-	}
+	const {value: playing, toggle: togglePlaying} = useBoolean(false);
+	const {count, increment} = useCounter(0);
 
 	const handleClick = () => {
-		// Counter.current += 1;
-		setPlaying(!playing);
+		togglePlaying();
 	};
 
 	return (
 		<div>
-			<p>{counter.current}</p>
 			{playing ? (<Timer/>) : (<p>Stop</p>)}
-			<button type='button' onClick={handleClick}>
+			<button type='button' onClick={togglePlaying}>
         Toggle
 			</button>
 			<p>{count}</p>
-			<button type='button' onClick={() => {
-				setCount(count + 1);
-			}}>
+			<button type='button' onClick={increment}>
         Increase
 			</button>
 		</div>
