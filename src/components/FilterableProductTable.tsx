@@ -9,20 +9,7 @@ type FilterableProductTableProps = {
 	products: Product[];
 };
 
-export default function FilterableProductTable({
-	products,
-}: FilterableProductTableProps) {
-	// UseEffect(() => {
-	// 	console.log('effect');
-	// 	document.title = `NOW: ${new Date().getTime()}`;
-	// });
-
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		document.title = `NOW: ${new Date().getTime()}`;
-	// 	}, 100);
-	// });
-
+function useProductsFilter(products: Product[]) {
 	// InStockOnly가 있어야 하는 곳
 	const [inStockOnly, setInStockOnly] = useState<boolean>(false);
 	// FilterText 있어야 하는 곳
@@ -32,6 +19,16 @@ export default function FilterableProductTable({
 	const filteredProducts = filterProducts(products, {
 		filterText, inStockOnly,
 	});
+	return {filterText, setFilterText, inStockOnly, setInStockOnly, filteredProducts,
+	};
+}
+
+export default function FilterableProductTable({
+	products,
+}: FilterableProductTableProps) {
+	const {
+		filterText, setFilterText, inStockOnly, setInStockOnly, filteredProducts,
+	} = useProductsFilter(products);
 
 	return (
 		<div className='filterable-product-table'>
