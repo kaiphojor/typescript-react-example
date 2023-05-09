@@ -1,18 +1,21 @@
 
 // App.spec.ts 도 가능
-const add = (x: number, y: number) => (
-	x + y
+const add = (...numbers: number[]): number => (
+	numbers.reduce((x, y) => x + y)
 );
 
+const context = describe;
+
 describe('add', () => {
-	const context = describe;
 	context('with two arguments', () => {
 		it('returns sum of two numbers', () => {
 			expect(add(3, 4)).toBe(7);
 		});
 	});
-});
 
-test('add 함수', () => {
-	expect(add(1, 2)).toBe(3);
+	context('with only one argument', () => {
+		it('returns the same number', () => {
+			expect(add(3)).toBe(3);
+		});
+	});
 });
