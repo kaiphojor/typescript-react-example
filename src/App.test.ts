@@ -1,7 +1,7 @@
 
 // App.spec.ts 도 가능
 const add = (...numbers: number[]): number => (
-	numbers.reduce((x, y) => x + y, 0)
+	numbers.reduce((acc, current) => acc + current, 0)
 );
 
 const context = describe;
