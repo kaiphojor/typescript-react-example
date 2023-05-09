@@ -6,7 +6,19 @@ const add = (...numbers: number[]): number => (
 
 const context = describe;
 
+test('add test', () => {
+	expect(add(1, 1, 1)).toBe(3);
+	expect(add(1, 2, 3)).toBe(6);
+	expect(add(33, 34, 33)).toBe(100);
+});
+
 describe('add', () => {
+	context('with three arguments', () => {
+		it('returns sum of three numbers', () => {
+			expect(add(3, 4, 5)).toBe(12);
+		});
+	});
+
 	context('with two arguments', () => {
 		it('returns sum of two numbers', () => {
 			expect(add(3, 4)).toBe(7);
