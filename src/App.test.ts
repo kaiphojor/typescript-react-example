@@ -6,12 +6,19 @@ const add = (...numbers: number[]): number => (
 
 const context = describe;
 
+// 평면적인 나열
 test('add test', () => {
-	expect(add(1, 1, 1)).toBe(3);
-	expect(add(1, 2, 3)).toBe(6);
+	// 인자가 없으면 0
+	expect(add()).toBe(0);
+
+	// 두 숫자의 합
+	expect(add(1, 2)).toBe(3);
+
+	// 세 숫자의 합
 	expect(add(33, 34, 33)).toBe(100);
 });
 
+// 구조화
 describe('add', () => {
 	context('with three arguments', () => {
 		it('returns sum of three numbers', () => {
@@ -27,7 +34,11 @@ describe('add', () => {
 
 	context('with only one argument', () => {
 		it('returns the same number', () => {
-			expect(add(3)).toBe(3);
+			// When
+			const result = add(2);
+
+			// Then
+			expect(result).toBe(2);
 		});
 	});
 

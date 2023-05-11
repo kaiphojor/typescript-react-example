@@ -1,39 +1,41 @@
 import {type ChangeEvent, useState, useRef} from 'react';
 
 type SetFilterTextProps = {
-	setFilterText: (value: string) => void;
+	setText: (value: string) => void;
 };
 
 type TextFieldProps = {
+	label: string;
 	placeholder: string;
-	filterText: string;
+	text: string;
 
 } & SetFilterTextProps;
 
 export default function TextField({
+	label,
 	placeholder,
-	filterText,
-	setFilterText,
+	text,
+	setText,
 }: TextFieldProps) {
 	// Const [filterText, setFilterText] = useState<string>('');
 	const id = useRef(`input-${Math.random()}`);
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const {value} = event.target;
-		setFilterText(value);
+		setText(value);
 		console.log(value);
 	};
 
 	return (
 		<div>
 			<label htmlFor={id.current}>
-				Search
+				{label}
 			</label>
 			<input
 				id={id.current}
 				type='text'
-				placeholder='Search...'
-				value={filterText}
+				placeholder={placeholder}
+				value={text}
 				onChange={handleChange}
 			/>
 		</div>

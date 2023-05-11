@@ -3,6 +3,7 @@ module.exports = {
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     '<rootDir>/setup-jest.js',
+    '<rootDir>/src/setupTests.ts',
   ],
   transform: {
     '^.+\\.(t|j)sx?$': ['@swc/jest', {
