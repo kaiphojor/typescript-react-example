@@ -1,9 +1,10 @@
-// Src/mocks/handlers.js
+/* eslint-disable @typescript-eslint/naming-convention */
 import {rest} from 'msw';
 import fixtures from '../../fixtures';
 
+const BASE_URL = process.env.API_BASE_URL ?? 'http://localhost:3000';
 const handlers = [
-	rest.get('http://localhost:3000/products', async (req, res, ctx) => {
+	rest.get(`${BASE_URL}/products`, async (req, res, ctx) => {
 		const {products} = fixtures;
 
 		return res(
