@@ -25,6 +25,12 @@ describe('TextField', () => {
 			/>);
 	}
 
+	function inputText(value: string) {
+		fireEvent.change(screen.getByLabelText(label), {
+			target: {value},
+		});
+	}
+
 	it('renders elements', () => {
 		// When
 		renderTextField();
@@ -39,14 +45,14 @@ describe('TextField', () => {
 
 	// Context: 입력했을 때
 	context('when user enters name', () => {
-		it('calls "setTest" handler', () => {
+		beforeEach(() => {
 			// Given
 			renderTextField();
+		});
 
+		it('calls "setTest" handler', () => {
 			// When
-			fireEvent.change(screen.getByLabelText(label), {
-				target: {value: 'New Name'},
-			});
+			inputText('New Name');
 			// Then
 			expect(setText).toBeCalledWith('New Name');
 		});
