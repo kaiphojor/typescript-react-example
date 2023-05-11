@@ -23,7 +23,6 @@ export default function TextField({
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const {value} = event.target;
 		setText(value);
-		console.log(value);
 	};
 
 	return (
