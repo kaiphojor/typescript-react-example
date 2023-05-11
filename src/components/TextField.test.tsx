@@ -6,10 +6,7 @@ test('TextField', () => {
 	const label = 'Name';
 	const text = 'Tester';
 
-	let called = false;
-	const setText = jest.fn(() => {
-		called = true;
-	});
+	const setText = jest.fn();
 
 	// When
 	render(
@@ -31,5 +28,5 @@ test('TextField', () => {
 		target: {value: 'New Name'},
 	});
 
-	expect(called).toBeTruthy();
+	expect(setText).toBeCalled();
 });
