@@ -1,5 +1,13 @@
 import {test, expect} from '@playwright/test';
 
+test('Show all products', async ({page}) => {
+	await page.goto('https://github.com');
+
+	const elements = page.getByText(/GitHub/).all();
+	expect((await elements).length).toBeGreaterThan(0);
+	// Await expect().toBeVisible();
+});
+
 test('Show all Filter products', async ({page}) => {
 	await page.goto('/');
 
