@@ -1,10 +1,6 @@
 import ReactDOM from 'react-dom/client';
-
-function App() {
-	return (
-		<p>Hello, World!</p>
-	);
-}
+import App from './App';
+import Counter from './components/Counter';
 
 const element = document.getElementById('root');
 
