@@ -1,17 +1,22 @@
 import {useEffect, useReducer, useState} from 'react';
 import useForceUpdate from '../hooks/useForceUpdate';
 
+// Business Logic
 const state = {
 	count: 0,
 
 };
+function increase() {
+	state.count += 1;
+}
+
+// UI
 
 export default function Counter() {
 	const forceUpdate = useForceUpdate();
 	// Const [count, setCount] = useState(0);
 	const handleClick = () => {
-		// SetCount;
-		state.count += 1;
+		increase();
 		// 강제 렌더링
 		forceUpdate();
 	};
@@ -25,3 +30,4 @@ export default function Counter() {
 		</div>
 	);
 }
+
