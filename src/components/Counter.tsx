@@ -1,29 +1,24 @@
-import {useEffect, useReducer, useState} from 'react';
+
+import {container} from 'tsyringe';
 import useForceUpdate from '../hooks/useForceUpdate';
-
-// Business Logic
-const state = {
-	count: 0,
-
-};
-function increase() {
-	state.count += 1;
-}
+import Store from '../store/Store';
 
 // UI
 
 export default function Counter() {
+	const store = container.resolve(Store);
+
 	const forceUpdate = useForceUpdate();
 	// Const [count, setCount] = useState(0);
 	const handleClick = () => {
-		increase();
+		store.count += 1;
 		// 강제 렌더링
 		forceUpdate();
 	};
 
 	return (
 		<div>
-			<p>{state.count}</p>
+			<p>{store.count}</p>
 			<button type='button' onClick={handleClick}>
         Increase
 			</button>
