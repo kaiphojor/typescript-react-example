@@ -10,15 +10,24 @@ import Store from '../store/Store';
 export default function CountControl() {
 	const store = container.resolve(Store);
 
-	const handleClick = () => {
+	const handleClickIncrease = () => {
 		store.count += 1;
+		// 강제 렌더링
+		store.update();
+	};
+
+	const handleClickDecrease = () => {
+		store.count -= 1;
 		// 강제 렌더링
 		store.update();
 	};
 
 	return (
 		<div>
-			<button type='button' onClick={handleClick}>
+			<button type='button' onClick={handleClickIncrease}>
+        Increase
+			</button>
+			<button type='button' onClick={handleClickDecrease}>
         Increase
 			</button>
 		</div>
