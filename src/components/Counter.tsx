@@ -2,12 +2,12 @@
 import {useEffect} from 'react';
 import {container} from 'tsyringe';
 import useForceUpdate from '../hooks/useForceUpdate';
-import Store from '../store/Store';
+import CounterStore from '../store/CounterStore';
 
 // UI
 
 export default function Counter() {
-	const store = container.resolve(Store);
+	const store = container.resolve(CounterStore);
 
 	const forceUpdate = useForceUpdate();
 

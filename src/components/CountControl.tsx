@@ -3,23 +3,21 @@ import {container} from 'tsyringe';
 
 import useForceUpdate from '../hooks/useForceUpdate';
 
-import Store from '../store/Store';
+import CounterStore from '../store/CounterStore';
 
 // UI
 
 export default function CountControl() {
-	const store = container.resolve(Store);
+	const store = container.resolve(CounterStore);
 
 	const handleClickIncrease = () => {
 		store.count += 1;
-		// 강제 렌더링
-		store.update();
+		store.publish();
 	};
 
 	const handleClickDecrease = () => {
 		store.count -= 1;
-		// 강제 렌더링
-		store.update();
+		store.publish();
 	};
 
 	return (
@@ -28,7 +26,7 @@ export default function CountControl() {
         Increase
 			</button>
 			<button type='button' onClick={handleClickDecrease}>
-        Increase
+        Decrease
 			</button>
 		</div>
 	);

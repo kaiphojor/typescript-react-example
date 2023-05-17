@@ -3,12 +3,12 @@ import {singleton} from 'tsyringe';
 type Listener = () => void;
 
 @singleton()
-export default class Store {
+export default class CounterStore {
 	count = 0;
 
 	listeners = new Set<Listener>();
 
-	update() {
+	publish() {
 		this.listeners.forEach(listener => {
 			listener();
 		});
