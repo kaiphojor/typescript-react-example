@@ -1,14 +1,10 @@
 
-import {container} from 'tsyringe';
-
-import useForceUpdate from '../hooks/useForceUpdate';
-
-import CounterStore from '../store/CounterStore';
+import useCounterStore from '../hooks/useCounterStore';
 
 // UI
 
 export default function CountControl() {
-	const store = container.resolve(CounterStore);
+	const store = useCounterStore();
 
 	const handleClickIncrease = () => {
 		store.count += 1;
@@ -22,6 +18,7 @@ export default function CountControl() {
 
 	return (
 		<div>
+			<p>{store.count}</p>
 			<button type='button' onClick={handleClickIncrease}>
         Increase
 			</button>
