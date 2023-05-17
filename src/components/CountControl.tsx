@@ -7,13 +7,11 @@ export default function CountControl() {
 	const store = useCounterStore();
 
 	const handleClickIncrease = () => {
-		store.count += 1;
-		store.publish();
+		store.increase();
 	};
 
 	const handleClickDecrease = () => {
-		store.count -= 1;
-		store.publish();
+		store.decrease();
 	};
 
 	return (
