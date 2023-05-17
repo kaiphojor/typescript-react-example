@@ -1,4 +1,5 @@
 
+import {useEffect} from 'react';
 import {container} from 'tsyringe';
 import useForceUpdate from '../hooks/useForceUpdate';
 import Store from '../store/Store';
@@ -9,20 +10,22 @@ export default function Counter() {
 	const store = container.resolve(Store);
 
 	const forceUpdate = useForceUpdate();
-	// Const [count, setCount] = useState(0);
-	const handleClick = () => {
-		store.count += 1;
-		// 강제 렌더링
-		forceUpdate();
-	};
+
+	useEffect(() => {
+		store.forceUpdates.add(forceUpdate);
+
+		return () => {
+			store.forceUpdates.delete(forceUpdate);
+		};
+	}, [store, forceUpdate]);
 
 	return (
 		<div>
-			<p>{store.count}</p>
-			<button type='button' onClick={handleClick}>
-        Increase
-			</button>
+			<p>
+        Count:
+				{' '}
+				{store.count}
+			</p>
 		</div>
 	);
 }
-
