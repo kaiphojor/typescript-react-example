@@ -1,26 +1,24 @@
 import {render, screen} from '@testing-library/react';
-import {App} from './App';
-import {createMemoryRouter, MemoryRouter, RouterProvider} from 'react-router-dom';
+import {createMemoryRouter, RouterProvider} from 'react-router-dom';
 import routes from './routes';
 
 const context = describe;
 
 describe('App', () => {
+	function renderRouter(path: string) {
+		const router = createMemoryRouter(routes, {initialEntries: [path]});
+		render(<RouterProvider router={router}/>);
+	}
+
 	context('when the current path is "/"', () => {
 		it('renders the home page', () => {
-			const router = createMemoryRouter(routes, {initialEntries: ['/']});
-			render((
-				<RouterProvider router={router}/>
-			));
+			renderRouter('/');
 			screen.getByText(/Welcome/);
 		});
 	});
 	context('when the current path is "/about"', () => {
 		it('renders the about page', () => {
-			const router = createMemoryRouter(routes, {initialEntries: ['/about']});
-			render((
-				<RouterProvider router={router}/>
-			));
+			renderRouter('/about');
 			screen.getByText(/This is test/);
 		});
 	});
