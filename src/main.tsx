@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom/client';
 
 function App() {
-	const style = {
-		color: '#00F',
-	};
-
 	return (
-		<p style={style}>Hello, World!</p>
+		<p
+			style={{
+				color: '#00F',
+			}}
+		>Hello, World!
+		</p>
 	);
 }
 
