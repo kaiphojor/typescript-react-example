@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 
 function App() {
 	return (
-		<p>Hello, World!</p>
+		<p className='greeting'>Hello, World!</p>
 	);
 }
 
