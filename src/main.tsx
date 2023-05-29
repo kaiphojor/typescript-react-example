@@ -1,8 +1,12 @@
 import ReactDOM from 'react-dom/client';
 
 function App() {
+	const style = {
+		color: '#00F',
+	};
+
 	return (
-		<p className='greeting'>Hello, World!</p>
+		<p style={style}>Hello, World!</p>
 	);
 }
 
