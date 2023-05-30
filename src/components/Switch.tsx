@@ -22,12 +22,21 @@ const Button = styled.button.attrs<ButtonProps>(props => ({
 		color: #FFF;
 	`}
 `;
+
+const PrimaryButton = styled(Button)`
+	background : #EEE;
+
+	${props => props.active && css`
+		background: #F0F;
+	`}
+`;
+
 export default function Switch() {
 	const {value: active, toggle} = useBoolean(false);
 
 	return (
-		<Button onClick={toggle} active={active}>
+		<PrimaryButton onClick={toggle} active={active}>
       On/Off
-		</Button>
+		</PrimaryButton>
 	);
 }
