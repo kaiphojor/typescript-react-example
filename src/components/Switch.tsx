@@ -12,7 +12,7 @@ function background(props: ButtonProps) {
 const Button = styled.button<ButtonProps>`
   background: #FFF;
   color: #000;
-  border: 1px solid #888;
+  border: 1px solid ${props => props.active ? '#F00' : '#888'};
 
 	${props => props.active && css`
 		background: #00F;
