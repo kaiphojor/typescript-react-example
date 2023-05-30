@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {useBoolean} from 'usehooks-ts';
 
 type ButtonProps = {
@@ -10,9 +10,14 @@ function background(props: ButtonProps) {
 }
 
 const Button = styled.button<ButtonProps>`
-  background: ${background};
+  background: #FFF;
   color: #000;
   border: 1px solid #888;
+
+	${props => props.active && css`
+		background: #00F;
+		color: #FFF;
+	`}
 `;
 export default function Switch() {
 	const {value: active, toggle} = useBoolean(false);
