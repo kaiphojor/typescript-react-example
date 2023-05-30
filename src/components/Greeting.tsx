@@ -1,17 +1,41 @@
-const darkMode = false;
-function primaryColor() {
-	if (darkMode) {
-		return darkMode ? '#F00' : '#00F';
-	}
+import type React from 'react';
+import styled from 'styled-components';
+
+const Paragraph = styled.p`
+		color: #00F;
+		strong{
+			font-size:2em;
+			color: #F00;
+		}
+`;
+
+const BigParagraph = styled(Paragraph)`
+	font-size: 2em;
+	strong{
+			font-size:1.5em;
+			/* color: #F00; */
+		}
+`;
+
+function HelloWorld({className}: React.HTMLAttributes<HTMLElement>) {
+	return (
+		<BigParagraph className={className}>
+			Hello, world
+			<strong>!</strong>
+		</BigParagraph>
+	);
 }
+
+const SmallHelloWorld = styled(HelloWorld)`
+	font-size: .1em;
+`;
 
 export default function Greeting() {
 	return (
-		<p
-			style={{
-				color: primaryColor(),
-			}}
-		>Hello, World!
-		</p>
+		// <BigParagraph>
+		// 	Hello, world
+		// 	<strong>!</strong>
+		// </BigParagraph>
+		<SmallHelloWorld/>
 	);
 }
