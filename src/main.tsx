@@ -1,22 +1,5 @@
 import ReactDOM from 'react-dom/client';
-
-const darkMode = false;
-function primaryColor() {
-	if (darkMode) {
-		return darkMode ? '#F00' : '#00F';
-	}
-}
-
-function App() {
-	return (
-		<p
-			style={{
-				color: primaryColor(),
-			}}
-		>Hello, World!
-		</p>
-	);
-}
+import {App} from './App';
 
 const element = document.getElementById('root');
 
