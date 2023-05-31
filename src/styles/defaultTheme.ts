@@ -1,6 +1,10 @@
 const defaultTheme = {
+	fonts: {
+		normal: '',
+		headline: '',
+	},
 	colors: {
-		background: '#FFF',
+		background: '#888',
 		text: '#000',
 		primary: '#F00',
 		secondary: '#00F',

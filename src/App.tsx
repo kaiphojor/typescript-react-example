@@ -1,13 +1,21 @@
+
+import {ThemeProvider} from 'styled-components';
+import {Reset} from 'styled-reset';
+import defaultTheme from './styles/defaultTheme';
+
+import {useDarkMode} from 'usehooks-ts';
+import darkTheme from './styles/darkTheme';
+
+import GlobalStyle from './styles/GlobalStyle';
+
 import Greeting from './components/Greeting';
 import Switch from './components/Switch';
-
-import {Reset} from 'styled-reset';
-import GlobalStyle from './styles/GlobalStyle';
-import defaultTheme from './styles/defaultTheme';
-import {ThemeProvider} from 'styled-components';
+import Button from './components/Button';
 
 export default function App() {
-	const theme = defaultTheme;
+	const {isDarkMode, toggle: toggleDarkMode} = useDarkMode();
+
+	const theme = isDarkMode ? darkTheme : defaultTheme;
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -15,6 +23,9 @@ export default function App() {
 			<GlobalStyle/>
 			<Greeting/>
 			<Switch/>
+			<Button onClick={toggleDarkMode} active={isDarkMode}>
+				Toggle Dark Mode
+			</Button>
 		</ThemeProvider>
 	);
 }
