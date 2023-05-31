@@ -17,9 +17,11 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-    width: 50%;
-    margin-inline: auto;
+    /* width: 50%;
+    margin-inline: auto; */
 		font-size: 1.6rem;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
 	}
 
 	:lang(ko) {
